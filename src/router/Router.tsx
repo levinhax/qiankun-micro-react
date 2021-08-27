@@ -8,6 +8,11 @@ const About = lazy(() => import('../views/About'))
 
 const routes: RouteProps[] = [
   {
+    path: '/',
+    exact: true,
+    component: Home,
+  },
+  {
     path: '/home',
     exact: true,
     component: Home,

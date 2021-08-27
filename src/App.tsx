@@ -6,7 +6,7 @@ import PageLoading from './components/pageLoading'
 
 function App() {
   return (
-    <Router>
+    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/micro2' : '/'}>
       {/* <PageRouter /> */}
       <React.Suspense fallback={<PageLoading />}>
         <Switch>
