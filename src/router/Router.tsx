@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import { Route, RouteProps, Switch } from 'react-router-dom'
 
 import PageLoading from '../components/pageLoading'
+import chartsRoute from './modules/charts'
 
 const Home = lazy(() => import('../views/Home'))
 const About = lazy(() => import('../views/About'))
@@ -22,6 +23,7 @@ const routes: RouteProps[] = [
     exact: true,
     component: About,
   },
+  chartsRoute,
 ]
 
 const PageRouter = () => (
