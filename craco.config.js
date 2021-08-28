@@ -22,6 +22,9 @@ module.exports = {
     },
   },
   webpack: {
+    alias: {
+      '@': path.resolve('src'),
+    },
     configure: (webpackConfig, { env, paths }) => {
       console.log('webpack configure env: ', env)
       // paths.appPath='public'

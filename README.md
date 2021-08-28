@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react 乾坤子应用
 
 ## Available Scripts
 
@@ -29,24 +27,17 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+# 问题解决
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 主应用(vue-cli 4.x)，切换到子应用(create-react-app)，加载完子应用后，主应用崩溃
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will
-remove the single build dependency from your project.
+报错：WebSocket connection to 'ws://localhost:8080/sockjs-node' failed:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right
-into your project so you have full control over them. All of the commands except `eject` will still work, but they will
-point to the copied scripts so you can tweak them. At this point you’re on your own.
+原因分析：CRA 建立的子应用的热更新 socket 连到了基座上，导致基座崩溃。子应用 socket 默认指向 ${location.hostname}:${location.port}，在基座模式下，子应用的 socket 指向了基座服务的地址。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you
-shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
+解决方案：子应用的 socket 端口显示指定 WDS_SOCKET_PORT 参数
+```
+// .env
 
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+WDS_SOCKET_PORT=9002
+```
