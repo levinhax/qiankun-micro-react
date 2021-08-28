@@ -33,9 +33,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 报错：WebSocket connection to 'ws://localhost:8080/sockjs-node' failed:
 
-原因分析：CRA 建立的子应用的热更新 socket 连到了基座上，导致基座崩溃。子应用 socket 默认指向 ${location.hostname}:${location.port}，在基座模式下，子应用的 socket 指向了基座服务的地址。
+原因分析：CRA 建立的子应用的热更新 socket 连到了基座上，导致基座崩溃。子应用 socket 默认指向
+${location.hostname}:${location.port}，在基座模式下，子应用的 socket 指向了基座服务的地址。
 
 解决方案：子应用的 socket 端口显示指定 WDS_SOCKET_PORT 参数
+
 ```
 // .env
 
