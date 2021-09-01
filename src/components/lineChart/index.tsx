@@ -48,7 +48,7 @@ echarts.use([
 
 const ComLineChart: React.FC<IProps> = props => {
   const chartRef: any = useRef() //拿到DOM容器
-  let myChart: any = null
+  let chartInstance: any = null
 
   const renderChart = () => {
     const option: ECOption = {
@@ -135,9 +135,13 @@ const ComLineChart: React.FC<IProps> = props => {
         // blendMode: 'luminosity' // 柱状图重合的颜色，blendMode 混合模式
       ],
     }
-
-    myChart = echarts.init(chartRef.current) // echart初始化容器
-    myChart.setOption(option)
+    const renderedInstance = echarts.getInstanceByDom(chartRef.current)
+    if (renderedInstance) {
+      chartInstance = renderedInstance
+    } else {
+      chartInstance = echarts.init(chartRef.current) // echart初始化容器
+    }
+    chartInstance.setOption(option)
   }
 
   // 每当props改变的时候就会实时重新渲染
@@ -152,8 +156,8 @@ const ComLineChart: React.FC<IProps> = props => {
   }, [])
 
   const handleResize = () => {
-    if (myChart) {
-      myChart.resize()
+    if (chartInstance) {
+      chartInstance.resize()
     }
   }
 
