@@ -23,7 +23,7 @@ const routes: RouteProps[] = [
     exact: true,
     component: About,
   },
-  chartsRoute,
+  ...chartsRoute,
 ]
 
 const PageRouter = () => (
