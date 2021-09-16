@@ -5,6 +5,7 @@ import IRoute from '../IRoute'
 const LineChart = lazy(() => import('../../views/Charts/lineChart'))
 const RingRatioBarChart = lazy(() => import('../../views/Charts/ringRatioBarChart'))
 const ThreeDimensionalCylinder = lazy(() => import('../../views/Charts/threeDimensionalCylinder'))
+const TreeChart = lazy(() => import('../../views/Charts/treeChart'))
 
 // const route: IRoute = {
 //   path: '/charts',
@@ -48,6 +49,14 @@ const route: IRoute[] = [
       title: '立体柱状图',
     },
     component: ThreeDimensionalCylinder,
+  },
+  {
+    path: '/charts/tree',
+    exact: false,
+    meta: {
+      title: '树状图',
+    },
+    component: TreeChart,
   },
 ]
 
