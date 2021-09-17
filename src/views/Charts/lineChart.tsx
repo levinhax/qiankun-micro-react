@@ -30,7 +30,7 @@ function LineChartView() {
           series2Data={chartData.series2Data}
         />
       </div>
-      <div className="btn-container">
+      <div className="other-container">
         <span onClick={handleUpdateData}>更新数据</span>
       </div>
     </div>

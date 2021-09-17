@@ -19,9 +19,10 @@ function ThreeDimensionalCylinderView() {
           seriesData={chartData.seriesData}
         />
       </div>
-      {/* <div className="btn-container">
-        <span onClick={handleUpdateData}>更新数据</span>
-      </div> */}
+      <div className="other-container">
+        {/* <span onClick={handleUpdateData}>更新数据</span> */}
+        <span>v5.0 pictorialBar borderColor颜色较淡，版本降级之后色彩正常</span>
+      </div>
     </div>
   )
 }

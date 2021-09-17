@@ -14,7 +14,7 @@ function TreeChartView() {
       <div className="chart-container">
         <ComTreeChart treeData={chartData.treeData} />
       </div>
-      {/* <div className="btn-container">
+      {/* <div className="other-container">
         <span onClick={handleUpdateData}>更新数据</span>
       </div> */}
     </div>

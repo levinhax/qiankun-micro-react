@@ -48,19 +48,27 @@ echarts.use([
   CanvasRenderer,
 ])
 
-const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
+const path = 'path://M214,1079l8-6h16l8,6-8,6H222Z'
+
+const ComPolygonColumnDiagram: React.FC<IProps> = props => {
   const chartRef: any = useRef() //拿到DOM容器
   let chartInstance: any = null
 
   const renderChart = () => {
-    const { title, xData, seriesData } = props
+    const { title, xData, series1Data, series2Data } = props
 
     const option: ECOption = {
       title: {
         text: title,
         subtext: '纯属虚构',
+        top: 5,
+        left: '20%',
+        textStyle: {
+          fontSize: 18,
+          color: '#fff',
+        },
       },
-      backgroundColor: '#061326',
+      backgroundColor: '#000',
       grid: {
         top: '20%',
         left: '-5%',
@@ -81,7 +89,7 @@ const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
             alignWithLabel: true,
           },
           nameTextStyle: {
-            color: '#82b0ec',
+            color: '#fff',
           },
           axisLine: {
             show: false,
@@ -91,7 +99,7 @@ const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
           },
           axisLabel: {
             color: '#fff',
-            margin: 30,
+            margin: 20,
           },
         },
       ],
@@ -104,6 +112,7 @@ const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
           },
           axisLabel: {
             color: '#fff',
+            formatter: '{value}%',
           },
           splitLine: {
             lineStyle: {
@@ -114,82 +123,79 @@ const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
       ],
       series: [
         {
-          name: '',
           type: 'pictorialBar',
-          symbolSize: [40, 10],
-          symbolOffset: [0, -6],
+          symbol: path,
+          symbolSize: [30, 8],
+          symbolOffset: [-20, -5],
           symbolPosition: 'end',
           z: 12,
-          // "barWidth": "0",
-          label: {
-            show: true,
-            position: 'top',
-            // "formatter": "{c}%"
-            fontSize: 15,
-            fontWeight: 'bold',
-            color: '#34DCFF',
-          },
-          color: '#2DB1EF',
-          data: seriesData,
+          color: '#68B4FF',
+          data: series1Data,
         },
         {
-          name: '',
           type: 'pictorialBar',
-          symbolSize: [40, 10],
-          symbolOffset: [0, 7],
-          // "barWidth": "20",
+          symbol: path,
+          symbolSize: [30, 8],
+          symbolOffset: [20, -5],
+          symbolPosition: 'end',
           z: 12,
-          color: '#2DB1EF',
-          data: seriesData,
+          color: '#FFCE69',
+          data: series2Data,
+        },
+        {
+          type: 'pictorialBar',
+          symbol: path,
+          symbolSize: [30, 8],
+          symbolOffset: [-20, 5],
+          z: 12,
+          color: '#68B4FF',
+          data: series1Data,
         },
         {
           name: '',
           type: 'pictorialBar',
-          symbolSize: [50, 15],
-          symbolOffset: [0, 12],
-          z: 10,
-          itemStyle: {
-            color: 'transparent',
-            borderColor: '#2EA9E5',
-            borderType: 'solid',
-            borderWidth: 2,
-          },
-          data: seriesData,
-        },
-        {
-          name: '',
-          type: 'pictorialBar',
-          symbolSize: [70, 20],
-          symbolOffset: [0, 18],
-          z: 10,
-          itemStyle: {
-            color: 'transparent',
-            borderColor: '#19465D',
-            borderType: 'solid',
-            borderWidth: 4,
-          },
-          data: seriesData,
+          symbol: path,
+          symbolSize: [30, 8],
+          symbolOffset: [20, 5],
+          color: '#FFCE69',
+          z: 12,
+          data: series2Data,
         },
         {
           type: 'bar',
-          //silent: true,
-          barWidth: '40',
-          barGap: '10%', // Make series be overlap
-          barCategoryGap: '10%',
           itemStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 0.7, [
-              {
-                offset: 0,
-                color: '#38B2E6',
-              },
-              {
-                offset: 1,
-                color: '#0B3147',
-              },
-            ]),
-            opacity: 0.8,
+            opacity: 0.7,
           },
-          data: seriesData,
+          barWidth: '30',
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: '#3D83CD',
+            },
+            {
+              offset: 1,
+              color: '#0B3147',
+            },
+          ]),
+          data: series1Data,
+        },
+        {
+          type: 'bar',
+          itemStyle: {
+            opacity: 0.7,
+          },
+          barWidth: '30',
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: '#CC9F49',
+            },
+            {
+              offset: 1,
+              color: '#0B3147',
+            },
+          ]),
+          data: series2Data,
         },
       ],
     }
@@ -222,4 +228,4 @@ const ComThreeDimensionalCylinder: React.FC<IProps> = props => {
   return <div ref={chartRef} style={{ width: '100%', height: '100%' }}></div>
 }
 
-export default ComThreeDimensionalCylinder
+export default ComPolygonColumnDiagram

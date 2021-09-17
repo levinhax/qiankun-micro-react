@@ -110,10 +110,6 @@ const ComTreeChart: React.FC<IProps> = props => {
       chartInstance = echarts.init(chartRef.current) // echart初始化容器
     }
     chartInstance.setOption(option)
-
-    // chartInstance.on('click', function (params: any) {
-    //   console.log(params)
-    // })
   }
 
   // 每当props改变的时候就会实时重新渲染
@@ -124,6 +120,13 @@ const ComTreeChart: React.FC<IProps> = props => {
   useEffect(() => {
     window.addEventListener('resize', () => {
       handleResize()
+    })
+
+    chartInstance.on('click', function (params: any) {
+      console.log(params)
+      console.log('当前节点: ', params.name)
+      console.log('当前节点 dataIndex: ', params.dataIndex) // 第n个节点，从上往下，父子逐个计算
+      console.log('当前节点数据: ', params.data) // 第n个节点，从上往下，父子逐个计算
     })
   }, [])
 

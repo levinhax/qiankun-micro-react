@@ -37,7 +37,7 @@ function RingRatioBarChartView() {
           pathData={chartData.pathData}
         />
       </div>
-      {/* <div className="btn-container">
+      {/* <div className="other-container">
         <span onClick={handleUpdateData}>更新数据</span>
       </div> */}
     </div>
