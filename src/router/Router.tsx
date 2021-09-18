@@ -3,6 +3,7 @@ import { Route, RouteProps, Switch } from 'react-router-dom'
 
 import PageLoading from '../components/pageLoading'
 import chartsRoute from './modules/charts'
+import formRoute from './modules/form'
 
 const Home = lazy(() => import('../views/Home'))
 const About = lazy(() => import('../views/About'))
@@ -24,6 +25,7 @@ const routes: RouteProps[] = [
     component: About,
   },
   ...chartsRoute,
+  ...formRoute,
 ]
 
 const PageRouter = () => (
