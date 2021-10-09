@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { Provider } from 'react-redux'
+import store from './store'
 
 // --------- 微前端应用处理 -----------
 
@@ -32,7 +34,9 @@ function render(props: any) {
   // 挂载应用
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>,
     container ? container.querySelector('#root') : document.querySelector('#root')
   )
