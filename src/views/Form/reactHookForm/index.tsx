@@ -1,34 +1,36 @@
 import React from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
+import { Input, Button } from 'antd'
 
-type Inputs = {
-  example: string
-  exampleRequired: string
+interface IFormInput {
+  firstName: string
+  lastName: string
+  iceCreamType: { label: string; value: string }
 }
 
-export default function App() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<Inputs>()
-  const onSubmit: SubmitHandler<Inputs> = data => console.log(data)
+const FormDemo = () => {
+  const { control, handleSubmit } = useForm<IFormInput>()
 
-  console.log(watch('example')) // watch input value by passing the name of it
+  const onSubmit = (data: IFormInput) => {
+    alert(JSON.stringify(data))
+  }
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register('example')} />
-
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register('exampleRequired', { required: true })} />
-      {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
-
-      <input type="submit" />
+    <form>
+      <label>First Name</label>
+      <Controller
+        render={({ field }) => <Input {...field} className="materialUIInput" />}
+        name="firstName"
+        control={control}
+        defaultValue=""
+      />
+      <label>First Name</label>
+      <Controller render={({ field }) => <Input {...field} />} name="lastName" control={control} defaultValue="" />
+      <Button type="primary" onClick={handleSubmit(onSubmit)}>
+        提交
+      </Button>
     </form>
   )
 }
+
+export default FormDemo
