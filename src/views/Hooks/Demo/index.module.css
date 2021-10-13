@@ -6,3 +6,14 @@
 .demo-item {
   margin-bottom: 12px;
 }
+
+.box {
+  width: 200px;
+  height: 100px;
+}
+.box1 {
+  background: red;
+}
+.box2 {
+  background: pink;
+}
