@@ -7,6 +7,7 @@ const RingRatioBarChart = lazy(() => import('../../views/Charts/ringRatioBarChar
 const ThreeDimensionalCylinder = lazy(() => import('../../views/Charts/threeDimensionalCylinder'))
 const TreeChart = lazy(() => import('../../views/Charts/treeChart'))
 const PolygonColumnDiagram = lazy(() => import('../../views/Charts/polygonColumnDiagram'))
+const TransverseLineChart = lazy(() => import('../../views/Charts/transverseLineChart'))
 
 // const route: IRoute = {
 //   path: '/charts',
@@ -66,6 +67,14 @@ const route: IRoute[] = [
       title: '多边体柱图',
     },
     component: PolygonColumnDiagram,
+  },
+  {
+    path: '/charts/transverseLineChart',
+    exact: false,
+    meta: {
+      title: '横向柱状图',
+    },
+    component: TransverseLineChart,
   },
 ]
 
